@@ -14,8 +14,8 @@ async def predict(input_text: InputText):
 
     label = ["house_no", "street_no", "Suite_no"]
     model = GLiNER.from_pretrained("srihari420/house_street_name_classifier")
-    prediction = model.predict_entity(text, label=label)
-    out = [{"text": i['text'], "label": i['label']} for i in prediction]
+    prediction = model.predict_entities(text, labels=label)
+    out = [{"text": i['text'], "labels": i['label']} for i in prediction]
     return {"prediction": out}
 
 if __name__ == "__main__":
